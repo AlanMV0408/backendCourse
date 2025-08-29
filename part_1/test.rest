@@ -10,19 +10,22 @@ Content-Type: application/json
 
 [
     {
-    "name": "Emir Lopez",
-    "email": "emirlopez@gmail.com",
-    "age": 25,
-    "city": "Mexico city",
-    "ocupation": "Web Developer",
+    "name": "Alan Mendez",
+    "email": "alanmendez@gmail.com",
+    "age": 19,
+    "city": "Gualajara, Jal, Mexico",
+    "ocupation": "Software Engineer",
     "message": "Hello from the server backend"
     },
     {
-    "name": "Guillermo Perez",
-    "email": "guillermoperez@gmail.com",
-    "age": 29,
-    "city": "Mexico city",
-    "ocupation": "Frontend Developer",
+    "name": "Camila Vega",
+    "email": "vegaCamila@gmail.com",
+    "age": 20,
+    "city": "Los Angeles, CA, USA",
+    "ocupation": "Doctor of Veterinary Medicine",
     "message": "Hello from the server backend"
     }
 ]
+
+### TEST DELETE / DATA ENDPOINT FOR DELETING THE LAST USER
+DELETE http://localhost:3000/api/data
