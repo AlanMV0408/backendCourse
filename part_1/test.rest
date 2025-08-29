@@ -1,0 +1,23 @@
+
+### TEST GET / website
+GET http://localhost:3000
+
+### TEST GET /dashboard website
+GET http://localhost:3000/dashboard
+
+### TEST GET / DATA ENDPOINT
+GET http://localhost:3000/api/data
+
+### TEST POST / DATA ENDPOINT FOR ADDING A NEW USER 
+POST http://localhost:3000/api/data
+Content-Type: application/json
+
+[{
+    "name": "John Doe", 
+    "email": "johndoe@gmail.com",
+    "age": 30,
+    "city": "Guadalajara",
+    "ocupation": "Software Developer",
+    "message": "hello from the server backend",
+    "date": new Date().toLocaleDateString(),
+}]
