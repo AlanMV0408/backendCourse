@@ -1,27 +1,27 @@
-//Importamos la clase Batabase Sync desde el modulo SQlite en nodeJS
+// Importamos la clase DatabaseSync desde el módulo nativo experimental de SQLite en Node.js
 import { DatabaseSync } from 'node:sqlite';
-//Creamos una DB en memoria
-const db = new DatabaseSync(":memory:");
+// Creamos una base de datos en memoria (no se guarda en disco, útil para pruebas o prototipos)
+const db = new DatabaseSync(':memory:');
 
-//Ejecutas una sentencia sql para crear la tabla user
+// Ejecutamos una sentencia SQL para crear la tabla de usuarios
 db.exec(`
-CREATE TABLE users (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE,
-    password TEXT 
-    )
-    `)
+    CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único autoincremental
+    username TEXT UNIQUE,                  -- Nombre de usuario único
+    password TEXT                          -- Contraseña en texto plano (⚠️ solo para pruebas, no recomendado en producción)
+    );
+`);
 
-
-//Ejecutar una sentencia sql para crear la tabla de todos (tabla de tareas)
+// Ejecutamos otra sentencia SQL para crear la tabla de tareas (todos)
 db.exec(`
-CREATE TABLE todos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    id_user INTEGER,
-    task TEXT,
-    completed BOOLEAN DEFAULT 0,
-    FOREIGN KEY (id_user) REFERENCES users (id)
-    )
-    `)
+    CREATE TABLE todos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,  -- Identificador único autoincremental
+    id_user INTEGER,                       -- ID del usuario que creó la tarea
+    task TEXT,                             -- Descripción de la tarea
+    completed BOOLEAN DEFAULT 0,           -- Estado de la tarea (0 = incompleta, 1 = completada)
+    FOREIGN KEY (id_user) REFERENCES users(id) -- Relación con la tabla de usuarios
+    );
+`);
 
+// Exportamos la instancia de la base de datos para usarla en otros módulos
 export default db;
